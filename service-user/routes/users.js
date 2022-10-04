@@ -5,5 +5,6 @@ const usersHandler = require("./handler/users");
 // Register route
 router.post("/register", usersHandler.register);
 router.post("/login", usersHandler.login);
+router.put("/:id", usersHandler.update);
 
 module.exports = router;
