@@ -12,3 +12,6 @@ Example, create seeders for user table on service-user:
 
 Undo seed script (this will cause your table to be empty)
 `npx sequelize db:seed:undo:all`
+
+## API Postman Documentation
+https://documenter.getpostman.com/view/14575742/VVBUz73K
