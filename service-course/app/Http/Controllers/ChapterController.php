@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ChapterController extends Controller
 {
+    // get chapters
     public function index(Request $request)
     {
         $chapters = Chapter::query();
@@ -21,6 +22,42 @@ class ChapterController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => $chapters->get()
+        ]);
+    }
+
+    // get detail chapter
+    public function show($id)
+    {
+        $chapter = Chapter::find($id);
+        if (!$chapter) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Chapter not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $chapter
+        ]);
+    }
+
+    // delete chapter
+    public function destroy($id)
+    {
+        $chapter = Chapter::find($id);
+        if (!$chapter) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Chapter not found'
+            ], 404);
+        }
+
+        $chapter->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Chapter successfully deleted'
         ]);
     }
 
