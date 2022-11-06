@@ -23,6 +23,6 @@ class MyCourse extends Model
     // method digunakan untuk mengambil data course
     public function course()
     {
-        return $this->belongsTo('App\Course');
+        return $this->belongsTo('App\Models\Course');
     }
 }
