@@ -18,6 +18,11 @@ class Review extends Model
         'note'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:m:s',
+        'updated_at' => 'datetime:Y-m-d H:m:s'
+    ];
+
     // method digunakan jika ingin mengambil data courses dari model Review
     public function course()
     {
