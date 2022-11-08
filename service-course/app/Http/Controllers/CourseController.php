@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\Course;
 use App\Models\Mentor;
+use App\Models\MyCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -28,6 +30,34 @@ class CourseController extends Controller
             'status' => 'success',
             'data' => $courses->paginate(10)
         ], 200);
+    }
+
+    // detail course
+    public function show($id)
+    {
+        $course =  Course::find($id);
+
+        // check if id exist in database
+        if (!$course) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Course not found'
+            ]);
+        }
+
+        // mendapatkan review course
+        $reviews = Review::where('course_id', '=', $id)->get()->toArray();
+
+        // mendapatkan jumlah student yang mengambil course
+        $totalStudent = MyCourse::where('course_id', '=', $id)->count();
+
+        $course['reviews'] = $reviews;
+        $course['total_student'] = $totalStudent;
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $course
+        ]);
     }
 
     public function create(Request $request)

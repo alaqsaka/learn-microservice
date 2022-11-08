@@ -27,6 +27,8 @@ Route::post('courses', [CourseController::class, 'create']);
 Route::get('courses', [CourseController::class, 'index']);
 Route::put('courses/{id}', [CourseController::class, 'update']);
 Route::delete('courses/{id}', [CourseController::class, 'destroy']);
+// Detail Course
+Route::get('courses/{id}', [CourseController::class, 'show']);
 
 // Mentor routes
 Route::post('mentors', [MentorController::class, 'create']);
