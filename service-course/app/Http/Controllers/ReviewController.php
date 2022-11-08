@@ -89,7 +89,7 @@ class ReviewController extends Controller
         if (!$review) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'review not found'
+                'message' => 'Review not found'
             ], 404);
         }
 
@@ -99,6 +99,29 @@ class ReviewController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => $review
+        ]);
+    }
+
+    // delete review
+    public function destroy($id)
+    {
+        // check if id exist in database
+
+        $review = Review::find($id);
+        // if id not found
+        if (!$review) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Review not found'
+            ], 404);
+        }
+
+        // if id found
+        $review->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Review Deleted'
         ]);
     }
 }
