@@ -35,7 +35,7 @@ class CourseController extends Controller
     // detail course
     public function show($id)
     {
-        $course =  Course::find($id);
+        $course =  Course::with('chapters.lessons')->with('mentor')->with('images')->find($id);
 
         // check if id exist in database
         if (!$course) {

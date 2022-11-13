@@ -29,17 +29,17 @@ class Course extends Model
     // mendapatkan data dari model mentors
     public function mentor()
     {
-        return $this->belongsTo('App\Mentor');
+        return $this->belongsTo('App\Models\Mentor');
     }
 
     // mendapatkan dari chapters
     public function chapters()
     {
-        return $this->hasMany('App\Chapter')->orderBy('id', 'ASC');
+        return $this->hasMany('App\Models\Chapter')->orderBy('id', 'ASC');
     }
 
     public function images()
     {
-        return $this->hasMany('App\ImageCourse')->orderBy('id', 'DESC');
+        return $this->hasMany('App\Models\ImageCourse')->orderBy('id', 'DESC');
     }
 }

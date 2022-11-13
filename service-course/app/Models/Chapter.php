@@ -24,6 +24,6 @@ class Chapter extends Model
     // method digunakan untuk mendapatkan data lesson
     public function lessons()
     {
-        return $this->hasMany('App\Lesson')->orderBy('id', 'ASC');
+        return $this->hasMany('App\Models\Lesson')->orderBy('id', 'ASC');
     }
 }
